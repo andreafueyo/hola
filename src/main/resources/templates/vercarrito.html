@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEPUCHA - Estética avanzada</title>
+<link rel="stylesheet" th:href="@{/css/registrarpersona.css}">
+
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+		</div>
+	</header>
+	
+	<h2>Carrito de Productos</h2>
+
+<div class="cliente">
+    <table>
+        <thead>
+            <tr>
+                <th>Código de producto</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="entry : ${carrito}">
+                <td th:text="${entry.key}"></td>
+                <td th:text="${entry.value}"></td>
+                <td>
+                    <form th:action="@{/eliminarproducto}" method="post">
+                        <input type="hidden" name="codigo" th:value="${entry.key}">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if="${error}" class="mensaje-error">
+			<p th:text="${error}"></p>
+		</div>
+		<div th:if="${mensajeExito}" class="mensaje-exito">
+			<p th:text="${mensajeExito}"></p>
+		</div>
+<div class="menucompra">
+    <form th:action="@{/vaciarcarrito}" method="post" class="menucompra-item vaciar">
+        <button type="submit" style="all: unset; cursor: pointer; width: 100%; height: 100%;">
+            <img th:src="@{/imagenes/papelera.png}" alt="VACIAR CARRITO">
+            <span>VACIAR CARRITO</span>
+        </button>
+    </form>
+
+    <a th:href="@{/realizarpedido}" class="menucompra-item comprar">
+        <img th:src="@{/imagenes/comprar.png}" alt="SEGUIR COMPRANDO">
+        <span>SEGUIR COMPRANDO</span>
+    </a>
+
+    <a th:href="@{/finalizarpedido}" class="menucompra-item finalizar">
+        <img th:src="@{/imagenes/finalizarcompra.png}" alt="FINALIZAR PEDIDO">
+        <span>FINALIZAR PEDIDO</span>
+    </a>
+</div>
+
+
+<br><br><br>
+	<!-- Footer -->
+	<footer>
+		<div class="footer-container">
+			<div class="izda">
+				<div class="footer-logo">
+					<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+				</div>
+			</div>
+			<div class="dcha">
+				<br>
+				<br>
+				<br>
+				<div class="footer-socials">
+					<img th:src="@{/imagenes/insta.png}" alt="Instagram"> <img
+						th:src="@{/imagenes/fb.png}" alt="Facebook"> <img
+						th:src="@{/imagenes/wa.png}" alt="WhatsApp">
+				</div>
+				<div class="footer-sections">
+					<div class="footer-section contact">
+						<h3>Contacto</h3>
+						<p>
+							<img class="icon" th:src="@{/imagenes/ubicacion.png}"> C/
+							Avenida de la Reguera nº7, Langreo, Asturias
+						</p>
+						<p>
+							<img class="icon" th:src="@{/imagenes/mail.png}"> Enviar
+							email
+						</p>
+						<p>
+							<img class="icon" th:src="@{/imagenes/telefono.png}">
+							985-985-985
+						</p>
+					</div>
+					<div class="footer-section">
+						<h3>Enlaces Destacados</h3>
+						<ul>
+							<li>Conoce nuestros servicios</li>
+							<li>Descubre la nueva depilación con hilo</li>
+							<li><a th:href="@{/quienessomos}">Quiénes somos</a></li>
+						</ul>
+					</div>
+					<div class="footer-section">
+						<h3>Textos Legales</h3>
+						<ul>
+							<li>Aviso legal</li>
+							<li>Política de cookies</li>
+							<li>Política de privacidad</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
+	

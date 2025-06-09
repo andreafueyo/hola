@@ -1,0 +1,119 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #dedede;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #72845d;
+    padding: 5px 20px; 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    height: 60px; 
+}
+
+.logo img {
+    width: 110px;
+    height: 65px; 
+}
+
+.cart {
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.cart a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.cart img {
+    width: 40px;
+    height: 35px;
+    border-radius: 40%; 
+    border: 2px solid white; 
+    margin-right: 8px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+    margin-top: 80px; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #72845d;
+    color: white;
+}
+
+td {
+    background-color:#a9a9a9;
+}
+
+button {
+    background-color: #72845d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #5a6b4a;
+}
+
+.contenedorboton {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+a {
+    text-decoration: none;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 100px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #72845d;
+    padding: 10px 20px;
+    color: white;
+}

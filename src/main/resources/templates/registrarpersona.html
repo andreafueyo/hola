@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registrar usuario</title>
+<link rel="stylesheet" th:href="@{/css/registrarpersona.css}">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+		</div>
+	</header>
+	<main>
+		<h2>MENÚ DEL ADMINISTRADOR</h2>
+		<h3>REGISTRO DE NUEVO EMPLEADO</h3>
+
+		<div class="form-container">
+			<p>Introduzca los datos del nuevo empleado.</p>
+			<form th:action="@{/registrarpersona}" th:object="${credenciales}"
+				method="post">
+				<label for="nombre">Nombre:</label> <input type="text" id="nombre"
+					name="nombre" th:field="*{persona.nombre}" required> <label
+					for="apellidos">Apellidos:</label> <input type="text"
+					id="apellidos" name="apellidos" th:field="*{persona.apellidos}"
+					required> <label for="nif">NIF/NIE:</label> <input
+					type="text" id="nif" name="nif" th:field="*{persona.nif}"
+					placeholder="XXXXXXXXQ" required pattern="[0-9]{8}[a-zA-Z]">
+
+				<label for="telefono">Número de teléfono:</label> <input type="text"
+					id="telefono" name="telefono" th:field="*{persona.telefono}"
+					required> <label for="fecha_Nac">Fecha de
+					nacimiento:</label> <input type="date" id="fecha_Nac" name="fecha_Nac"
+					th:field="*{persona.fecha_nac}" placeholder="yyyy-MM-dd" required></input>
+
+				<label for="email">Email:</label> <input type="email" id="email"
+					name="email" th:field="*{persona.email}" required> <label
+					for="usuario">Usuario:</label> <input type="text" id="usuario"
+					name="usuario" th:field="*{usuario}" readonly required> <label
+					for="contrasena">Contraseña:</label> <input type="password"
+					id="contrasena" name="contrasena" th:field="*{password}" required>
+
+				<button type="submit">
+					Enviar <span>&raquo;</span>
+				</button>
+
+				<br>
+
+				<div class="contenedorboton">
+					<a th:href="@{/menuadmin}">
+						<button type="button">Volver</button>
+					</a>
+				</div><br><br>
+			</form>
+
+			<script>
+  document.getElementById("nombre").addEventListener("input", function () {
+    const nombre = this.value.trim().toLowerCase().replace(/\s+/g, '');
+    document.getElementById("usuario").value = nombre ? nombre + ".esteticien" : "";
+  });
+</script>
+
+			<p th:if="${error}" th:text="${error}" style="color: red;"></p>
+			<p th:if="${exito}" th:text="${exito}" style="color: green;"></p>
+		</div>
+	</main>
+
+	<footer>
+		<div class="footer-container">
+			<div class="izda">
+				<!-- Logotipo -->
+				<div class="footer-logo">
+					<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+				</div>
+			</div>
+			<div class="dcha">
+				<!-- Redes Sociales -->
+				<br>
+				<br>
+				<br>
+				<div class="footer-socials">
+					<img th:src="@{/imagenes/insta.png}" alt="Logo"> <img
+						th:src="@{/imagenes/fb.png}" alt="Logo"> <img
+						th:src="@{/imagenes/wa.png}" alt="Logo">
+				</div>
+
+				<!-- footer -->
+				<div class="footer-sections">
+					<!-- Contacto -->
+					<div class="footer-section contact">
+						<h3>Contacto</h3>
+						<p>
+							<img class="icon" th:src="@{/imagenes/ubicacion.png}"> C/
+							Avenida de la Reguera nº7, Langreo, Asturias
+						</p>
+						<p>
+							<img class="icon" th:src="@{/imagenes/mail.png}"> Enviar
+							email
+						</p>
+						<p>
+							<img class="icon" th:src="@{/imagenes/telefono.png}">
+							985-985-985
+						</p>
+					</div>
+
+					<!-- Enlaces Destacados -->
+					<div class="footer-section">
+						<h3>Enlaces Destacados</h3>
+						<ul>
+							<li>Conoce nuestros servicios</li>
+							<li>Descubre la nueva depilación con hilo</li>
+							<li>Quiénes somos</li>
+						</ul>
+					</div>
+
+					<!-- Textos Legales -->
+					<div class="footer-section">
+						<h3>Textos Legales</h3>
+						<ul>
+							<li>Aviso legal</li>
+							<li>Política de cookies</li>
+							<li>Política de privacidad</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

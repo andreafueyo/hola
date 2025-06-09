@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#dedede;
+}
+
+header {
+	
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #72845d;
+    padding: 5px 20px; 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    height: 60px; 
+}
+
+.logo img {
+    width: 110px;
+    height: 65px; 
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+    font-size: 24px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 100px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #72845d;
+    padding: 10px 20px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+button {
+    background-color: #72845d;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #5a6a4a;
+}
+
+fieldset{
+    color: black;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+form {
+    padding: 25px;
+    margin-bottom: 25px;
+    margin: 25px auto;
+    width: 80%;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+.contenedorboton {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 1px auto;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #72845d;
+    color: white;
+}
+
+td {
+    background-color:#a9a9a9;
+}
+

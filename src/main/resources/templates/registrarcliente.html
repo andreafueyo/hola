@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registrar cliente</title>
+<link rel="stylesheet" th:href="@{/css/registrarpersona.css}">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+		</div>
+	</header>
+	<main>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<h3>REGISTRO DE NUEVO CLIENTE</h3>
+		<div class="form-container">
+			<p>Introduzca los datos del nuevo cliente.</p>
+			<form th:action="@{/registrarcliente}" th:object="${credenciales}"
+				method="post">
+				<label for="nombre">Nombre:</label> <input type="text" id="nombre"
+					name="nombre" th:field="*{cliente.nombre}" required> <label
+					for="fechaNac">Fecha de nacimiento:</label> <input type="date"
+					id="fechaNac" name="fechaNac" th:field="*{cliente.fecha_nac}"
+					placeholder="yyyy-MM-dd" required></input> <label for="nif">NIF/NIE:</label>
+				<input type="text" id="nif" name="nif" th:field="*{cliente.NIF}"
+					placeholder="XXXXXXXXQ" required pattern="[0-9]{8}[a-zA-Z]">
+
+				<label for="direccion">Dirección:</label> <input type="text"
+					id="direccion" name="direccion" th:field="*{cliente.direccion}"
+					required> <label for="email">Email:</label> <input
+					type="email" id="email" name="email" th:field="*{cliente.email}"
+					required> <label for="telefono">Teléfono:</label> <input
+					type="text" id="telefono" name="telefono"
+					th:field="*{cliente.telefono}" required> <label
+					for="usuario">Usuario:</label> <input type="text" id="usuario"
+					name="usuario" th:field="*{usuario}" required> <label
+					for="contrasena">Contraseña:</label> <input type="password"
+					id="contrasena" name="contrasena" th:field="*{password}" required>
+
+				<button type="submit">
+					Enviar <span>&raquo;</span>
+				</button>
+				<br>
+
+				<div class="contenedorboton">
+					<a th:href="@{/}">
+						<button type="button">Volver</button>
+					</a>
+				</div>
+			</form>
+			<p th:if="${error}" th:text="${error}" style="color: red;"></p>
+			<p th:if="${exito}" th:text="${exito}" style="color: green;"></p>
+		</div>
+	</main>
+</body>
+<!-- Footer -->
+<footer>
+	<div class="footer-container">
+		<div class="izda">
+			<div class="footer-logo">
+				<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+			</div>
+		</div>
+		<div class="dcha">
+			<br>
+			<br>
+			<br>
+			<div class="footer-socials">
+				<img th:src="@{/imagenes/insta.png}" alt="Instagram"> <img
+					th:src="@{/imagenes/fb.png}" alt="Facebook"> <img
+					th:src="@{/imagenes/wa.png}" alt="WhatsApp">
+			</div>
+			<div class="footer-sections">
+				<div class="footer-section contact">
+					<h3>Contacto</h3>
+					<p>
+						<img class="icon" th:src="@{/imagenes/ubicacion.png}"> C/
+						Avenida de la Reguera nº7, Langreo, Asturias
+					</p>
+					<p>
+						<img class="icon" th:src="@{/imagenes/mail.png}"> Enviar
+						email
+					</p>
+					<p>
+						<img class="icon" th:src="@{/imagenes/telefono.png}">
+						985-985-985
+					</p>
+				</div>
+				<div class="footer-section">
+					<h3>Enlaces Destacados</h3>
+					<ul>
+						<li>Conoce nuestros servicios</li>
+						<li>Descubre la nueva depilación con hilo</li>
+						<li><a th:href="@{/quienessomos}">Quiénes somos</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h3>Textos Legales</h3>
+					<ul>
+						<li>Aviso legal</li>
+						<li>Política de cookies</li>
+						<li>Política de privacidad</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+</html>

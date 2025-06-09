@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEPUCHA - Estética avanzada</title>
+<link rel="stylesheet" th:href="@{/css/registrarpersona.css}">
+
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+		</div>
+		
+		<div class="cart">
+			<a th:href="@{/vercarrito}" class="menu-item"> <img
+				th:src="@{/imagenes/comprar.png}" alt="VER CARRITO"> <span>VER
+					CARRITO</span>
+			</a>
+		</div>
+	</header>
+	
+	<h2>PRODUCTOS A LA VENTA</h2>
+	<main>
+		<div th:if="${error}" style="color: red; font-weight: bold;">
+			<p th:text="${error}"></p>
+		</div>
+		<div th:if="${mensajeExito}" style="color: green; font-weight: bold;">
+			<p th:text="${mensajeExito}"></p>
+		</div>
+
+		<form id="formSeleccion" th:action="@{/anadirpedido}" method="post">
+			<input type="hidden" name="codProducto" id="codigoSeleccionado">
+			<input type="hidden" name="cantidadSeleccionada"
+				id="cantidadSeleccionada">
+		</form>
+
+		<table>
+			<thead>
+				<tr>
+					<th>NOMBRE</th>
+					<th>PRECIO UNIDAD (€)</th>
+					<th>CANTIDAD DISPONIBLE</th>
+					<th>CANTIDAD A COMPRAR</th>
+					<th>SELECCIONAR</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto : ${productos}">
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.cantidad}"></td>
+					<td><input type="number" name="cantidadescogida" min="1"
+						th:max="${producto.cantidad}" value="1"></td>
+					<td>
+						<button type="button" th:data-codigo="${producto.codigo}"
+							onclick="seleccionarProducto(this)">✔</button>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<script>
+			function seleccionarProducto(button) {
+				const row = button.closest("tr");
+				const codigo = button.getAttribute("data-codigo");
+				const inputCantidad = row
+						.querySelector("input[name='cantidadescogida']");
+				const cantidad = inputCantidad.value;
+
+				document.getElementById("codigoSeleccionado").value = codigo;
+				document.getElementById("cantidadSeleccionada").value = cantidad;
+
+				document.getElementById("formSeleccion").submit();
+			}
+		</script>
+
+		<br> <br>
+		<div class="contenedorboton">
+			<a href="/menucliente">
+				<button type="button">Volver</button>
+			</a>
+		</div>
+	</main><br><br>
+	<!-- Footer -->
+	<footer>
+		<div class="footer-container">
+			<div class="izda">
+				<div class="footer-logo">
+					<img th:src="@{/imagenes/LOGOPEPU.png}" alt="Logo">
+				</div>
+			</div>
+			<div class="dcha">
+				<br>
+				<br>
+				<br>
+				<div class="footer-socials">
+					<img th:src="@{/imagenes/insta.png}" alt="Instagram"> <img
+						th:src="@{/imagenes/fb.png}" alt="Facebook"> <img
+						th:src="@{/imagenes/wa.png}" alt="WhatsApp">
+				</div>
+				<div class="footer-sections">
+					<div class="footer-section contact">
+						<h3>Contacto</h3>
+						<p>
+							<img class="icon" th:src="@{/imagenes/ubicacion.png}"> C/
+							Avenida de la Reguera nº7, Langreo, Asturias
+						</p>
+						<p>
+							<img class="icon" th:src="@{/imagenes/mail.png}"> Enviar
+							email
+						</p>
+						<p>
+							<img class="icon" th:src="@{/imagenes/telefono.png}">
+							985-985-985
+						</p>
+					</div>
+					<div class="footer-section">
+						<h3>Enlaces Destacados</h3>
+						<ul>
+							<li>Conoce nuestros servicios</li>
+							<li>Descubre la nueva depilación con hilo</li>
+							<li><a th:href="@{/quienessomos}">Quiénes somos</a></li>
+						</ul>
+					</div>
+					<div class="footer-section">
+						<h3>Textos Legales</h3>
+						<ul>
+							<li>Aviso legal</li>
+							<li>Política de cookies</li>
+							<li>Política de privacidad</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
+	
